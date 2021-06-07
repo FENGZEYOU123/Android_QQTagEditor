@@ -43,5 +43,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
             vEditText = itemView.findViewById(R.id.vEditText);
         }
     }
+    public List getList(){
+        return mList;
+    }
 
 }
