@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         initialView();
     }
     private void initialView(){
-        mList.add("Android");
-        mList.add("Flutter");
-        mList.add("Ios");
+        mList.add("0");
+        for(int i=1; i<=20; i++){
+            mList.add(""+i);
+        }
         vRecycleView = findViewById(R.id.vRecycleView);
         mGridLayoutManager = new GridLayoutManager(this,MAX_COLUMN);
         mMyAdapter = new MyAdapter(this,mList);
@@ -45,6 +46,5 @@ public class MainActivity extends AppCompatActivity {
         vRecycleView.setAdapter(mMyAdapter);
         vRecycleView.setLayoutManager(mGridLayoutManager);
         mItemTouchHelper.attachToRecyclerView(vRecycleView);
-
     }
 }

@@ -12,6 +12,9 @@ public class MyItemTouchHelperCallBack extends ItemTouchHelper.Callback {
     public int getMovementFlags(@NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         int drawFlag = ItemTouchHelper.LEFT |ItemTouchHelper.UP |ItemTouchHelper.RIGHT |ItemTouchHelper.DOWN;
         int swipeFlag = 0;
+        if(null == mMyAdapter){
+            mMyAdapter = (MyAdapter) recyclerView.getAdapter();
+        }
         return makeMovementFlags(drawFlag,swipeFlag);
     }
 
@@ -19,8 +22,10 @@ public class MyItemTouchHelperCallBack extends ItemTouchHelper.Callback {
     public boolean onMove(@NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
         int selectedPosition = viewHolder.getAdapterPosition();
         int movedPosition = target.getAdapterPosition();
-//        if
-        MyAdapter myAdapter = (MyAdapter) recyclerView.getAdapter();
+        if(null != mMyAdapter){
+            Collections.swap(mMyAdapter.getList(),selectedPosition,movedPosition);
+            mMyAdapter.notifyItemMoved(selectedPosition,movedPosition);
+        }
         return false;
     }
 

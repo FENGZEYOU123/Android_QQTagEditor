@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/vTvTitle"
-        android:text="编辑你的个人标签"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
